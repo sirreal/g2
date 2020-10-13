@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { EventHandler } from 'react';
 
 import { is } from './is';
 
 export { default as mergeRefs } from 'react-merge-refs';
 export { default as hoistNonReactStatics } from 'hoist-non-react-statics';
 
-export function mergeEvent(handler, htmlHandler) {
+export function mergeEvent(
+	handler: EventListener,
+	htmlHandler?: EventListener,
+): EventListener {
 	return (event) => {
 		if (is.function(htmlHandler)) {
 			htmlHandler(event);
